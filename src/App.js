@@ -17,7 +17,7 @@ class App extends React.Component{
       currentUser: null
     }
   }
-
+ 
   // handle any Auth changes On firebase
   componentDidMount(){
     this.unsubscriberFromAuth = auth.onAuthStateChanged(user => {
@@ -40,7 +40,7 @@ class App extends React.Component{
       
         
         <BrowserRouter>
-        <Header />
+        <Header currentUser={this.state.currentUser}/>
           <Switch>
             <Route exact path='/' component={HomePage}/> 
             <Route  path='/shop' component={ShopPage}/>
@@ -58,4 +58,4 @@ export default App;
 // To Fix the ERROR => Error: 'node-sass' version 5.0.0 is incompatible with ^4.0.0
 // Solution => is npm install -g sass
 //               npm install --save-dev sass 
-// ********hello this is new commit is added right now
+  
