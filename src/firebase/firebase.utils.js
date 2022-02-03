@@ -11,6 +11,33 @@ const config =  {
     appId: "1:574230841707:web:efbc0ac6089f981cc4e42e",
     measurementId: "G-838SG6RTXS"
 };
+/////////////////////// Storing User Data  In Firebase => from userAuth to database
+export const createUserProfileDocument = async (userAuth , additionalData) => {
+    if(!userAuth) return;
+
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+    
+    const snapshot = await userRef.get();
+
+    if(!snapshot.exists){
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        try{
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            })
+        } catch(error){
+            console.log('error creating user' , error.massage);
+        }
+     }
+    return userRef;
+};
+///////////////////////////////////////////////////////////////////////////////////
+
 
 firebase.initializeApp(config);
 

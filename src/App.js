@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {  } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './components/pages/homepage/homepage.component';
 import ShopPage from './components/pages/shop/shop.component';
 import SinInAndSignUpPage from './components/pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 
 
@@ -20,11 +20,11 @@ class App extends React.Component{
  
   // handle any Auth changes On firebase
   componentDidMount(){
-    this.unsubscriberFromAuth = auth.onAuthStateChanged(user => {
+    this.unsubscriberFromAuth = auth.onAuthStateChanged( async user => {
 
-      this.setState({ currentUser: user });
+      // this.setState({ currentUser: user });
 
-      console.log(user)
+      createUserProfileDocument(user);
     });
   }
 
