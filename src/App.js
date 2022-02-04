@@ -18,15 +18,23 @@ class App extends React.Component{
     }
   }
  
-  // handle any Auth changes On firebase
+  // handle any Auth changes On firebase ,  Storing User Data In Our App
   componentDidMount(){
-    this.unsubscriberFromAuth = auth.onAuthStateChanged( async user => {
+    this.unsubscriberFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if(userAuth){
+        const userRef = await createUserProfileDocument(userAuth);
 
-      // this.setState({ currentUser: user });
-
-      createUserProfileDocument(user);
+        userRef.onSnapshot(snapshot => {
+          this.setState({
+            currentUser:{
+            id: snapshot.id, ...snapshot.data()
+            }
+          });
+        });
+      }
     });
   }
+
 
   componentWillUnmount(){ // this mathod Close the Subscribion 
     this.unsubscriberFromAuth();
