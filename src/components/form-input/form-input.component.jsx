@@ -6,15 +6,14 @@ const FormInput = ({ handleChage , label , ...otherProps }) => (
     <div className="group">
         <input className="form-input" onChange={handleChage} {...otherProps} />
 
-       {label ? (
-           <label 
-           className={`${
-               otherProps.value.length ? 'shrink' : ''
-           } form-input-label`}
-           >
-               {label}
-               </label>
-       ) : null}
+       {
+           label ? 
+            (<label className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`} >
+                {label}
+           </label>)
+           : null
+       }
+
 
        
     </div>
