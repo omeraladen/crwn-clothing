@@ -34,7 +34,7 @@ class SignIn extends React.Component{
 
         <form onSubmit={this.handleSubmit}> 
         <FormInput  type="email" 
-                    handleChage={this.handleChange} 
+                    handleChange={this.handleChange} 
                     value={this.state.email} 
                     label ="emial"
                     required />
@@ -42,7 +42,7 @@ class SignIn extends React.Component{
         <FormInput  type="password"
                     name="password"
                     value={this.state.email}
-                    handleChage={this.handleChange}
+                    handleChange={this.handleChange}
                     label = "password"
                     required />
 

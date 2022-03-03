@@ -18,37 +18,43 @@ class SignUp extends React.Component{
     }
 
 
+    
+
     handleSubmit = async event => {
         event.preventDefault();
-
-        const { displayName , email , password , confirmPassword } = this.State;
-
-        if(password !== confirmPassword){
-            alert('password dont match');
-            return;
+    
+        const { displayName, email, password, confirmPassword } = this.state;
+    
+        if (password !== confirmPassword) {
+          alert("passwords don't match");
+          return;
         }
-
-        try{
-            const { user } = await auth.createUserWithEmailAndPassword(email,password);
-             await createUserProfileDocument(user, { displayName });
-
-            this.setState({  //this well reset the state or clear it
-                displayName: '',
-                email:'',
-                password:'',
-                confirmPassword:''
-            });
-        }catch (erorr){
-            console.error(erorr);
+    
+        try {
+          const { user } = await auth.createUserWithEmailAndPassword(
+            email,
+            password
+          );
+    
+          await createUserProfileDocument(user, { displayName });
+    
+          this.setState({
+            displayName: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+          });
+        } catch (error) {
+          console.error(error);
         }
-    };
+      };
 
-    handleChage = event =>{
-        const { name , vlaue } = event.target;
-
-        this.setState({ [name]: vlaue });
-    };
-
+      handleChange = event => {
+        const { name, value } = event.target;
+    
+        this.setState({ [name]: value });
+      };
+   
 
     render(){
         const { displayName , email , password , confirmPassword } = this.state;
@@ -61,7 +67,7 @@ class SignUp extends React.Component{
                         type='text'
                         name='displayName'
                         value={displayName}
-                        onChange={this.handleChage}
+                        onChange={this.handleChange}
                         label='Display Name'
                         required
                     />
@@ -69,7 +75,7 @@ class SignUp extends React.Component{
                         type='email'
                         name='email'
                         value={email}
-                        onChange={this.handleChage}
+                        onChange={this.handleChange}
                         label='Email'
                         required
                     />
@@ -77,23 +83,23 @@ class SignUp extends React.Component{
                         type='password'
                         name='password'
                         value={password}
-                        onChange={this.handleChage}
+                        onChange={this.handleChange}
                         label='Password'
                         required
                     />
                     <FormInput
                         type='password'
-                        name='confirmpassword'
+                        name='confirmPassword'
                         value={confirmPassword}
-                        onChange={this.handleChage}
-                        label='Confirom password'
+                        onChange={this.handleChange}
+                        label='Confirom Password'
                         required
                     />
     
                     <CustomButton type='submit'> SIGN UP </CustomButton>               
                 </form>
             </div>
-        )
+        );
     }
 }
 
