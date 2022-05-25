@@ -29,7 +29,7 @@ class App extends React.Component{
             currentUser:{
             id: snapshot.id, ...snapshot.data()
             }
-          });
+          });   
         });
       }
 
@@ -50,7 +50,7 @@ class App extends React.Component{
       
         
         <BrowserRouter>
-        <Header currentUser={this.state.currentUser}/>
+        <Header/>
           <Switch>
             <Route exact path='/' component={HomePage}/> 
             <Route  path='/shop' component={ShopPage}/>

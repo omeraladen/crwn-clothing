@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
@@ -21,5 +22,9 @@ const Header = ({ currentUser }) => (
     </div>
 ); 
 
+// mapStateToProps => this name is stander with redux codebase
+const mapStateToProps = () => ({
+    currentUser : state.user.currentUser  // we need to get (root-reducer => user => currentUser )
+})
 
-export default Header;
+export default connect(mapStateToProps)(Header);
