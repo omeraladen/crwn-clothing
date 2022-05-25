@@ -23,8 +23,8 @@ const Header = ({ currentUser }) => (
 ); 
 
 // mapStateToProps => this name is stander with redux codebase
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
     currentUser : state.user.currentUser  // we need to get (root-reducer => user => currentUser )
 })
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Header); 
