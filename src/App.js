@@ -1,14 +1,16 @@
-import React, {  } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {
+  Switch, Route, Redirect
+
+} from 'react-router-dom';
 import './App.css';
 import HomePage from './components/pages/homepage/homepage.component';
 import ShopPage from './components/pages/shop/shop.component';
-import SinInAndSignUpPage from './components/pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions'
-
+import SignInAndSignUpPage from './components/pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
 
 class App extends React.Component{
@@ -18,7 +20,7 @@ class App extends React.Component{
     
     const { setCurrentUser } = this.props;
     
-    this.unsubscriberFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.nonsubscriberFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -32,40 +34,72 @@ class App extends React.Component{
       setCurrentUser(userAuth);
     });
   }
-
-
-  componentWillUnmount(){ // this mathod Close the Subscribion 
-    this.unsubscriberFromAuth();
-  }
   
 
+  componentWillUnmount(){ // this method Close the Subscription 
+    this.nonsubscriberFromAuth();
+  }
+  
+  
   
   render(){
     return (
       <div> 
       
         
-        <BrowserRouter>
-        <Header/>
-          <Switch>
-            <Route exact path='/' component={HomePage}/> 
-            <Route  path='/shop' component={ShopPage}/>
-            <Route  path='/signin' component={SinInAndSignUpPage}/>
-         </Switch>
-        </BrowserRouter>
+        
+        
+       
+       
+      <Header />
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
+        </Switch>
+       
       
   
       </div>
     );
   }
 }
-// dispatch() mean what aver object you pass on it is it send it to all reducers
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch( setCurrentUser(user) ) 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
 });
 
-export default connect(null, mapDispatchToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+
+// const mapStateToProps = ({ user }) => ({
+//   CurrentUser : user.CurrentUser
+// });
+
+// // dispatch() mean what aver object you pass on it is it send it to all reducers
+
+// const mapDispatchToProps = dispatch => ({
+//   setCurrentUser: user => dispatch( setCurrentUser(user) ) 
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 
 
