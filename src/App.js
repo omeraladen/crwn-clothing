@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import {
   Switch, Route, Redirect
 
@@ -11,6 +12,8 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions'
 import SignInAndSignUpPage from './components/pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckOutPage from './components/pages/checkout/checkout.component';
+import { selectCurrentUser } from './redux/cart/user.selector';
 
 
 class App extends React.Component{
@@ -55,6 +58,7 @@ class App extends React.Component{
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckOutPage} />
           <Route
             exact
             path='/signin'
@@ -75,8 +79,8 @@ class App extends React.Component{
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector ({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -89,9 +93,7 @@ export default connect(
 )(App);
 
 
-// const mapStateToProps = ({ user }) => ({
-//   CurrentUser : user.CurrentUser
-// });
+
 
 // // dispatch() mean what aver object you pass on it is it send it to all reducers
 
