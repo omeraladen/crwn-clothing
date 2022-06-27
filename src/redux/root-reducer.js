@@ -7,4 +7,3 @@ export default combineReducers({
     user: useReducer,
     cart:cartReducer
 });
-
