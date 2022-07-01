@@ -1,27 +1,18 @@
 import React from "react";
-import SHOP_DATA from "./shop.data";
-import CollectionPreview from "../../collection-preview/collection-preview.component";
 
-class ShopPage extends React.Component{
-    constructor(props){
-        super(props);
+import CollectionOverview from "../../collections-overview/collections-overview.component";
 
-        this.state = {
-            collections: SHOP_DATA
-        }
-    }
+const ShopPage = () =>(
 
-    render(){
-        const {collections} = this.state; 
-        return (
+     
         <div className="shop-page">
-            {
-                collections.map(({ id , ...otherCollectionProps }) => (
-                    <CollectionPreview key={id}{...otherCollectionProps}/>
-                ))
-            }
-        </div>);
-    }
-}
+            <CollectionOverview/>
+        </div>
+);
+
+
 
 export default ShopPage;  
+
+// we do not need class cose we not access the state
+// switch class component to function component
