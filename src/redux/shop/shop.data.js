@@ -13,13 +13,13 @@ const SHOP_DATA = {
       {
         id: 2,
         name: 'Blue Beanie',
-        imageUrl: 'https://i.ibb.co/ypkgK0X/blue-beanie.png',
+        imageUrl: 'https://images.unsplash.com/photo-1518440964434-2824a382cb88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ymx1ZSUyMGhhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         price: 18
       },
       {
         id: 3,
         name: 'Brown Cowboy',
-        imageUrl: 'https://i.ibb.co/QdJwgmp/brown-cowboy.png',
+        imageUrl: 'https://images.unsplash.com/photo-1490393602454-04ef4860188a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJvd24lMjBoYXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
         price: 35
       },
       {
@@ -31,7 +31,7 @@ const SHOP_DATA = {
       {
         id: 5,
         name: 'Green Beanie',
-        imageUrl: 'https://i.ibb.co/YTjW3vF/green-beanie.png',
+        imageUrl: 'https://images.unsplash.com/photo-1557115837-0c4e58980d47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z3JlZW4lMjBoYXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
         price: 18
       },
       {
@@ -43,7 +43,7 @@ const SHOP_DATA = {
       {
         id: 7,
         name: 'Red Beanie',
-        imageUrl: 'https://i.ibb.co/bLB646Z/red-beanie.png',
+        imageUrl: 'https://images.unsplash.com/photo-1583443554642-c032da238a82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlZCUyMGhhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         price: 18
       },
       {
@@ -55,7 +55,7 @@ const SHOP_DATA = {
       {
         id: 9,
         name: 'Blue Snapback',
-        imageUrl: 'https://i.ibb.co/X2VJP2W/blue-snapback.png',
+        imageUrl: 'https://images.unsplash.com/photo-1483103068651-8ce44652c331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGJsdWUlMjBoYXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
         price: 16
       }
     ]
@@ -135,7 +135,7 @@ const SHOP_DATA = {
       {
         id: 20,
         name: 'Grey Jean Jacket',
-        imageUrl: 'https://i.ibb.co/N71k1ML/grey-jean-jacket.png',
+        imageUrl: 'https://images.unsplash.com/photo-1520013225692-fff4010c0ae6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z3JheSUyMGphY2tldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         price: 90
       },
       {
@@ -160,45 +160,28 @@ const SHOP_DATA = {
       {
         id: 23,
         name: 'Blue Tanktop',
-        imageUrl: 'https://i.ibb.co/7CQVJNm/blue-tank.png',
+        imageUrl: 'https://images.unsplash.com/photo-1614973627157-2bb72aae478c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fG11c2xpbSUyMGdpcmwlMjBibHVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
         price: 25
       },
       {
         id: 24,
         name: 'Floral Blouse',
-        imageUrl: 'https://i.ibb.co/4W2DGKm/floral-blouse.png',
+        imageUrl: 'https://images.unsplash.com/photo-1524591937052-de412792ebe0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         price: 20
       },
       {
         id: 25,
-        name: 'Floral Dress',
-        imageUrl: 'https://i.ibb.co/KV18Ysr/floral-skirt.png',
+        name: 'Floral coverhead',
+        imageUrl: 'https://images.unsplash.com/photo-1522219406764-db207f1f7640?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
         price: 80
       },
       {
         id: 26,
         name: 'Red Dots Dress',
-        imageUrl: 'https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png',
+        imageUrl: 'https://images.unsplash.com/photo-1540423253680-890290d6462c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
         price: 80
       },
-      {
-        id: 27,
-        name: 'Striped Sweater',
-        imageUrl: 'https://i.ibb.co/KmSkMbH/striped-sweater.png',
-        price: 45
-      },
-      {
-        id: 28,
-        name: 'Yellow Track Suit',
-        imageUrl: 'https://i.ibb.co/v1cvwNf/yellow-track-suit.png',
-        price: 135
-      },
-      {
-        id: 29,
-        name: 'White Blouse',
-        imageUrl: 'https://i.ibb.co/qBcrsJg/white-vest.png',
-        price: 20
-      }
+     
     ]
   },
   mens: {
@@ -239,7 +222,7 @@ const SHOP_DATA = {
       {
         id: 35,
         name: 'Burgundy T-shirt',
-        imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
+        imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ3VuZHklMjBzaG9ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         price: 25
       }
     ]

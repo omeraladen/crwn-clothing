@@ -1,18 +1,20 @@
-import { createStore , applyMiddleware } from 'redux';
+import { createStore  } from 'redux';
 
 import persistStore from 'redux-persist/es/persistStore'; 
-
-import logger from 'redux-logger'; // we use it to debugging our redux code
-
 import rootReducer from './root-reducer';
 
-export const  middleware = [logger]; // we store the middleware in to array
 
-export const store = createStore(rootReducer , applyMiddleware(...middleware)); // just export
+export const store = createStore(rootReducer ); 
 
 export const persistor = persistStore(store); 
+
+
+
+const exportedObject = {
+    store , persistStore
+}
  
-export default {store , persistor};
+export default exportedObject;
 
 
 /*
