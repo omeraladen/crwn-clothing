@@ -2,15 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
-import CustomButton from "../custom-button/custom-button.component";
+
 import { selectCartItems } from "../../redux/cart/cart.selector";
 import CartItem from "../cart-item/cart-item.component";
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
-import'./cart-dropdown.styles.scss';
 
+import {
+    CartDropdownContainer,
+    CartDropdownButton,
+    EmptyMessageContainer,
+    CartItemsContainer
+  } from './cart-dropdown.styles';
 const CartDropdown = ({ cartItems , history , dispatch }) =>(
-    <div className="cart-dropdown">
-        <div className="cart-items">
+    <CartDropdownContainer>
+        <CartItemsContainer>
             {
                 cartItems.length ? (    // if the cart length is 0 print empty massage
 
@@ -19,18 +24,18 @@ const CartDropdown = ({ cartItems , history , dispatch }) =>(
                 ))
 
                 ) : (
-                <span className="empty-massage">You Cart is Empty!</span>
+                <EmptyMessageContainer>You Cart is Empty!</EmptyMessageContainer>
             ) 
            }
-        </div>
+        </CartItemsContainer>
 
-        <CustomButton onClick ={ () => {
+        <CartDropdownButton onClick ={ () => {
 
             history.push("/checkout");
             dispatch(toggleCartHidden()); // To Remove the Dropdown-cart after open checkout-page
           
-          } }>GO TO CHECKOUT</CustomButton>
-    </div>
+          } }>GO TO CHECKOUT</CartDropdownButton>
+    </CartDropdownContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
