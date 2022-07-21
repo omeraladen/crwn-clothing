@@ -23,6 +23,7 @@ class App extends React.Component{
     
     const { setCurrentUser } = this.props;
     
+    
     this.nonsubscriberFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth);
