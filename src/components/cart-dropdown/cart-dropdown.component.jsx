@@ -13,6 +13,7 @@ import {
     EmptyMessageContainer,
     CartItemsContainer
   } from './cart-dropdown.styles';
+  
 const CartDropdown = ({ cartItems , history , dispatch }) =>(
     <CartDropdownContainer>
         <CartItemsContainer>

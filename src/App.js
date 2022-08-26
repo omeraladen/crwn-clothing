@@ -9,11 +9,15 @@ import './App.css';
 import HomePage from './components/pages/homepage/homepage.component';
 import ShopPage from './components/pages/shop/shop.component';
 import Header from './components/header/header.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+
+import {  auth, createUserProfileDocument  } from './firebase/firebase.utils';
+
 import { setCurrentUser } from './redux/user/user.actions'
 import SignInAndSignUpPage from './components/pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckOutPage from './components/pages/checkout/checkout.component';
 import { selectCurrentUser } from './redux/cart/user.selector';
+import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
+
 
 
 class App extends React.Component{
@@ -21,7 +25,7 @@ class App extends React.Component{
   // handle any Auth changes On firebase ,  Storing User Data In Our App
   componentDidMount(){
     
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser   } = this.props;
     
     
     this.nonsubscriberFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -35,7 +39,8 @@ class App extends React.Component{
             })
         });
       }
-      setCurrentUser(userAuth);
+      setCurrentUser(userAuth); 
+    
     });
   }
   
@@ -81,7 +86,8 @@ class App extends React.Component{
 }
 
 const mapStateToProps = createStructuredSelector ({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  collection: selectCollectionsForPreview
 });
 
 const mapDispatchToProps = dispatch => ({

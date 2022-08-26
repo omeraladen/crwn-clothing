@@ -1,10 +1,17 @@
-import { createStore  } from 'redux';
+import { createStore ,applyMiddleware  } from 'redux';
 
 import persistStore from 'redux-persist/es/persistStore'; 
 import rootReducer from './root-reducer';
+import logger from 'redux-logger';
 
+const middlewares = [];
 
-export const store = createStore(rootReducer ); 
+if (process.env.NODE_ENV === 'development') {
+    middlewares.push(logger);
+  }
+  
+  export const store = createStore(rootReducer, applyMiddleware(...middlewares));
+
 
 export const persistor = persistStore(store); 
 
@@ -24,4 +31,14 @@ export default exportedObject;
  step 3 create const persistor(store)
  step 4 add it to export default
  => Go To root-reducer
+
+
+ Apply a Redux MiddleWare : 
+import { createStore ,applyMiddleware  } from 'redux';
+import logger from 'redux-logger';
+const middlewares = [];
+ if (process.env.NODE_ENV === 'development') {
+    middlewares.push(logger);
+  }
+  export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 */
